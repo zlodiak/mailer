@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EmailTest < ActiveSupport::TestCase
+class EmailTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
