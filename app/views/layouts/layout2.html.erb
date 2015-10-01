@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>mailer</title>
+    <title>layout2</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -15,12 +15,7 @@
 
     <aside>
       <a class="btn btn-default">aside</a>
-      <% if user_signed_in? %>
-          <span>Здравствуйте, <%= current_user.email %></span>
-          <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'btn-default btn' %>
-      <% else %>
-          <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_password_path %>
-      <% end %>      
+      <a class="btn btn-default">aside</a>
     </aside>
 
     <%= yield %>
