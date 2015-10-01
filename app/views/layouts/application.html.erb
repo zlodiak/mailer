@@ -17,9 +17,9 @@
       <a class="btn btn-default">aside</a>
       <% if user_signed_in? %>
           <span>Здравствуйте, <%= current_user.email %></span>
-          <%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: 'btn-default btn' %>
+          <%= link_to 'Выйти', destroy_user_session_path, :method => :get, class: 'btn-default btn' %>
       <% else %>
-          <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_password_path %>
+          <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
       <% end %>      
     </aside>
 
