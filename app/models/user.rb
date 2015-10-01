@@ -5,11 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def role?(r)
-    p '-----------------------'
-    p r
-    p role
-    p role.include? r.to_s
-
     role.include? r.to_s
   end         
 end
