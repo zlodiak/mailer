@@ -1,7 +1,11 @@
 class EmailsController < InheritedResources::Base
+  before_filter :authenticate_user!
+  #before_filter :owner_check
+
   def index
     if current_user
       @emails = Email.where(user_id: current_user.id) 
+      @user = current_user
     else
       @emails = []
     end
@@ -24,6 +28,10 @@ class EmailsController < InheritedResources::Base
   end  
 
   private
+    def owner_check
+
+    end
+
     def email_params
       params.require(:email).permit(:email, :description)
     end

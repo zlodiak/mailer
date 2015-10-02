@@ -5,8 +5,13 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  resources :users do
+    resources :emails
+  end 
+  
   ActiveAdmin.routes(self)
-  resources :emails
+  #resources :emails
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
