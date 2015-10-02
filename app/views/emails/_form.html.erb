@@ -7,9 +7,19 @@
       <% @email.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
+      </ul>     
     </div>
   <% end %>
+
+  <div class="cell">
+    <%= label_tag(:email, "email:") %> 
+    <%= f.text_field(:email, class: 'form-control') %>  
+  </div>   
+
+  <div class="cell">
+    <%= label_tag(:description, "description:") %>
+    <%= f.text_area(:description, class: 'form-control') %>  
+  </div>    
 
   <div class="actions">
     <%= f.submit %>

@@ -7,9 +7,25 @@ class EmailsController < InheritedResources::Base
     end
   end
 
+  def new
+    @email = Email.new
+  end
+
+  def create
+    @email = current_user.emails.build(email_params)
+
+    if @email.save
+      flash[:success] = 'email saved'
+      redirect_to root_path
+    else
+      flash.now[:error] = 'email not saved'
+      render 'new'
+    end
+  end  
+
   private
     def email_params
-      params.require(:email).permit()
+      params.require(:email).permit(:email, :description)
     end
 end
 
