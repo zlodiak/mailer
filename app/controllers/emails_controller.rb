@@ -1,6 +1,10 @@
 class EmailsController < InheritedResources::Base
   def index
-    @emails = Email.all
+    if current_user
+      @emails = Email.where(user_id: current_user.id) 
+    else
+      @emails = []
+    end
   end
 
   private
