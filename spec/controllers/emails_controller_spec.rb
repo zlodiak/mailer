@@ -45,21 +45,22 @@ RSpec.describe EmailsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all emails as @emails" do
-      #@user = FactoryGirl.create(:user) 
-      #visit new_user_session_path
-      #fill_in "user_email", :with => @user.email
-      #fill_in "user_password", :with => "qwertyui"
-      #click_button "commitSignIn"  
-    #user = User.where(:email => @user.email.to_s).first #if user.is_a?(Symbol)
-    #request.session[:user] = user.id
-      #email = Email.create! valid_attributes
+      @user = FactoryGirl.create(:user) 
+      visit new_user_session_path
+      fill_in "user_email", :with => @user.email
+      fill_in "user_password", :with => "qwertyui"
+      click_button "commitSignIn"  
+      binding.pry
+      email = Email.create! valid_attributes
       #get :index, {}, valid_session
-      #email = FactoryGirl.create(:email, user_id: @user.id) 
-      #visit emails_path
-      #expect(assigns(:emails)).to eq([email])
+      #email = FactoryGirl.create(:email, user_id: @user.id.to_i) 
+      #binding.pry
+      #visit user_emails_path(@user)
+      expect(assigns(:emails)).to eq([email])
+      #expect(assigns(@user)).to eq(@user)
     end
   end
-
+=begin
   describe "GET #show" do
     it "assigns the requested email as @email" do
       email = Email.create! valid_attributes
@@ -74,7 +75,7 @@ RSpec.describe EmailsController, type: :controller do
       expect(assigns(:email)).to be_a_new(Email)
     end
   end
-=begin
+
 
   describe "GET #edit" do
     it "assigns the requested email as @email" do
