@@ -47,21 +47,14 @@ RSpec.describe EmailsController, type: :controller do
     login_user
 
     it "assigns all emails as @emails" do
-      #@user = FactoryGirl.create(:user) 
-      
-      #visit new_user_session_path
-      #fill_in "user_email", :with => @user.email
-      #fill_in "user_password", :with => "qwertyui"
-      #click_button "commitSignIn"  
-      #binding.pry
+      user = FactoryGirl.create(:user) 
       email = Email.create! valid_attributes
-      get :index, {}, valid_session
+      get :index
 
       #email = FactoryGirl.create(:email, user_id: @user.id.to_i) 
       #binding.pry
-      #visit user_emails_path(@user)
       expect(assigns(:emails)).to eq([email])
-      #expect(assigns(@user)).to eq(@user)
+      expect(assigns(:user)).to eq(user)
     end
   end
 =begin
