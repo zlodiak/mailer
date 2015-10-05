@@ -18,6 +18,9 @@
       <% if user_signed_in? %>
           <span>Здравствуйте, <%= current_user.email %></span>
           <%= link_to 'Выйти', destroy_user_session_path, :method => :get, class: 'btn-default btn' %>
+          <br />
+          <%= link_to 'emails', user_emails_path(current_user) %>
+          <%= link_to 'sends', user_sends_path(current_user) %>
       <% else %>
           <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
       <% end %>      

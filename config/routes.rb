@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users, controllers: {
     sessions: 'users/sessions', 
     registrations: 'users/registrations', 
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :emails
+    resources :sends
   end 
   
   ActiveAdmin.routes(self)
