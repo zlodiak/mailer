@@ -50,10 +50,10 @@ RSpec.describe EmailsController, type: :controller do
       #email = Email.create! valid_attributes
       get :index
 
-      email = FactoryGirl.create(:email, user_id: @user.id) 
+      #email = FactoryGirl.create(:email, user_id: @user.id) 
       binding.pry
-      expect(assigns(@emails)).to eq([email])
-      #expect(assigns(@user)).to eq(@user)
+      #expect(assigns(@emails)).to eq([email])
+      expect(assigns(@user)).to eq(@user)
     end
   end
 =begin
