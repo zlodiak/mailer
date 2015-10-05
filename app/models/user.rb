@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :emails
+  has_many :sends
 
   def role?(r)
     role.include? r.to_s

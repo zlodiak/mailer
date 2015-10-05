@@ -21,6 +21,7 @@
           <br />
           <%= link_to 'emails', user_emails_path(current_user) %>
           <%= link_to 'sends', user_sends_path(current_user) %>
+          <%= link_to 'send up', '' %>
       <% else %>
           <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
       <% end %>      
