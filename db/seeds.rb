@@ -16,20 +16,21 @@ User.create!(:email => 'user3@ad.ad', :password => 'qwertyui', :password_confirm
 30.times do |n|
   Email.create!(   
     email: "subscriber#{n+1}@ad.ad",
-    description: Faker::Lorem.paragraph(7),
+    description: Faker::Lorem.paragraph(2),
     user_id: rand(1..4)
   )
 end   
 
 Email.create!(   
   email: "prozaik81-2@yandex.ru",
-  description: Faker::Lorem.paragraph(7),
+  description: Faker::Lorem.paragraph(2),
   user_id: 1
 )
 
 # sends generate
 10.times do |n|
   Send.create!(   
+    subject: Faker::Company.name,
     message: Faker::Lorem.paragraph(7),
     user_id: rand(1..4)
   )

@@ -13,9 +13,13 @@ class SendsController < InheritedResources::Base
     redirect_to user_sends_path(current_user)
   end
 
+  def update
+    update!{ user_send_path(current_user, params[:id]) }
+  end
+
   private
     def send_params
-      params.require(:send).permit(:message)
+      params.require(:send).permit(:message, :subject)
     end
 
 end

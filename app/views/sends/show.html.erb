@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Message:</strong>
+  <strong><%= @send.subject %>::</strong>
   <%= @send.message %>
 </p>
+<hr />
 
 <%= link_to 'Edit', edit_user_send_path(current_user, @send) %> |
 <%= link_to 'Back', user_sends_path %>

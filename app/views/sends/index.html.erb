@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Sends</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Message</th>
+      <th>subject</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +11,7 @@
   <tbody>
     <% @sends.each do |send| %>
       <tr style="border-bottom: 2px solid red;">
-        <td><%= send.message %></td>
+        <td><b><%= send.subject %></b></td>
         <td><%= link_to 'Show', user_send_path(current_user, send.id) %></td>
         <td><%= link_to 'Edit', edit_user_send_path(current_user, send.id) %></td>
         <td><%= link_to 'Destroy', user_send_path(current_user, send.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
