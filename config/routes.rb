@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :emails
     resources :sends
+    get 'send_up' => 'sends#send_up', as: 'send_up'  
   end 
   
   ActiveAdmin.routes(self)

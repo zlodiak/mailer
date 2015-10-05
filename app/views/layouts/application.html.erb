@@ -9,9 +9,17 @@
   </head>
   <body>
     <div class="messages">
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+     <p class="notice"><%#= notice %></p>
+     <p class="alert"><%#= alert %></p>     
     </div>
+
+    <% if flash %>
+      <div class="notice_area">
+        <% flash.each do |message_type,  message| %>
+          <div class="alert  alert-<%= message_type %>" role="alert"><%= message %></div>
+        <% end %>  
+      </div>
+    <% end %>       
 
     <aside>
       <a class="btn btn-default">aside</a>
@@ -21,7 +29,7 @@
           <br />
           <%= link_to 'emails', user_emails_path(current_user) %>
           <%= link_to 'sends', user_sends_path(current_user) %>
-          <%= link_to 'send up', '' %>
+          <%= link_to 'send up', user_send_up_path(current_user) %>
       <% else %>
           <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
       <% end %>      

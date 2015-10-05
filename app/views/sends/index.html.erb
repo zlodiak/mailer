@@ -12,7 +12,7 @@
 
   <tbody>
     <% @sends.each do |send| %>
-      <tr>
+      <tr style="border-bottom: 2px solid red;">
         <td><%= send.message %></td>
         <td><%= link_to 'Show', user_send_path(current_user, send.id) %></td>
         <td><%= link_to 'Edit', edit_user_send_path(current_user, send.id) %></td>
