@@ -1,6 +1,6 @@
 class SendsController < InheritedResources::Base
   before_filter :authenticate_user! 
-  before_filter :owner_check, only: [:show, :edit, :update, :destroy, :create, :index, :new]
+  #before_filter :owner_check, only: [:show, :edit, :update, :destroy, :create, :index, :new]
 
   def send_up
     @sends = Send.where(user_id: current_user.id) 
