@@ -1,6 +1,6 @@
 class EmailsController < InheritedResources::Base
   before_filter :authenticate_user!
-  before_filter :owner_check, only: [:show, :edit, :update, :destroy, :create]
+  before_filter :owner_check, only: [:show, :edit, :update, :destroy, :create, :index, :new]
 
   def index
     if current_user
@@ -28,15 +28,6 @@ class EmailsController < InheritedResources::Base
   end  
 
   private
-    def owner_check
-      if params[:user_id] != current_user.id.to_s
-        flash[:error] = 'access denied'
-        redirect_to root_path
-      else
-        true
-      end
-    end
-
     def email_params
       params.require(:email).permit(:email, :description)
     end

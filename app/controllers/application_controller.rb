@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
      end
   end  
 
+  def owner_check
+    if params[:user_id] != current_user.id.to_s
+      flash[:error] = 'access denied'
+      redirect_to root_path
+    else
+      true
+    end
+  end
 end

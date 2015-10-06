@@ -1,17 +1,19 @@
 class SendMailer < ApplicationMailer
   default from: 'no-reply@kalinin.ru'
  
-  def sends_send(sends, emails)
+  def sends_send(sends, emails, current_user_email)
+    logger.debug '--------------------------------------------------------------------'
+    logger.debug 'send log for ' + current_user_email + ' :: started at ' + Time.now.to_s
+
     sends.each do |send|
       emails.each do |email|
         @send = send
         @email = email
 
-        p '-------------------'
-        if mail(to: email.email, subject: 'subscribe')
-          p 'OK: ' + email.email + ' :: ' + send.id.to_s
+        if mail(to: email.email, subject: send.subject)
+          logger.debug 'OK: ' + email.email + ' :: ' + send.id.to_s + ' :: ' + Time.now.to_s
         else
-          p 'FAIL: ' + email.email + ' :: ' + send.id.to_s
+          logger.debug 'FAIL: ' + email.email + ' :: ' + send.id.to_s + ' :: ' + Time.now.to_s
         end
       end  
     end  
