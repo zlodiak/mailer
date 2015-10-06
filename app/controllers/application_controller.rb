@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def owner_check
     if params[:user_id] != current_user.id.to_s
       flash[:error] = 'access denied'
-      redirect_to new_user_session_path
+      redirect_to root_path
     else
       true
     end

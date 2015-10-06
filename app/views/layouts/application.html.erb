@@ -27,6 +27,7 @@
           <span>Здравствуйте, <%= current_user.email %></span>
           <%= link_to 'Выйти', destroy_user_session_path, :method => :get, class: 'btn-default btn' %>
           <br />
+          <%= link_to 'welcome', root_path %>
           <%= link_to 'emails', user_emails_path(current_user) %>
           <%= link_to 'sends', user_sends_path(current_user) %>
           <%= link_to 'send up', user_send_up_path(current_user) %>
