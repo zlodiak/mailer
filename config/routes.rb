@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'log/index'
+  # post 'log/index/:log' => 'log#index', as: 'log'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions', 

@@ -6,9 +6,12 @@ class SendsController < InheritedResources::Base
     @sends = Send.where(user_id: current_user.id) 
     @emails = Email.where(user_id: current_user.id) 
 
-    SendMailer.sends_send(@sends, @emails, current_user.email).deliver_now
-
-    redirect_to log_index_path
+    send_mailer = SendMailer.sends_send(@sends, @emails, current_user.email)
+    @log = send_mailer
+    send_mailer.deliver_now
+    p '-------------------'
+    p @log
+    @log
   end
 
   def update
