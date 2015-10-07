@@ -5,20 +5,9 @@ class SendsController < InheritedResources::Base
   def send_up
     @sends = Send.where(user_id: current_user.id) 
     @emails = Email.where(user_id: current_user.id) 
-    @log = []
 
-    @log.push(Time.now.to_s + ' :: send mails log for user: ' + current_user.email)
-
-    @sends.each do |send|
-      @emails.each do |email|
-        if SendMailer.sends_send(send, email).deliver_now
-          @log.push(Time.now.to_s + ' :: OK :: send unit with id: ' + send.id.to_s + ' :: sent to: ' + email.email)
-        else
-          @log.push(Time.now.to_s + ' :: ERROR :: send unit with id: ' + send.id.to_s + ' :: NOT sent to: ' + email.email)
-        end
-      end  
-    end  
-
+    log_construct
+    
     @log
   end
 
@@ -29,6 +18,22 @@ class SendsController < InheritedResources::Base
   private
     def send_params
       params.require(:send).permit(:message, :subject)
+    end
+
+    def log_construct
+      @log = []
+
+      @log.push(Time.now.to_s + ' :: send mails log for user: ' + current_user.email)
+
+      @sends.each do |send|
+        @emails.each do |email|
+          if SendMailer.sends_send(send, email).deliver_now
+            @log.push(Time.now.to_s + ' :: OK :: send unit with id: ' + send.id.to_s + ' :: sent to: ' + email.email)
+          else
+            @log.push(Time.now.to_s + ' :: ERROR :: send unit with id: ' + send.id.to_s + ' :: NOT sent to: ' + email.email)
+          end
+        end  
+      end  
     end
 
 end
