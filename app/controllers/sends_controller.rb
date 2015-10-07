@@ -26,7 +26,7 @@ class SendsController < InheritedResources::Base
 
   private
     def send_params
-      params.require(:send).permit(:message, :subject)
+      params.require(:send).permit(:message, :subject, :image)
     end
 
     def log_construct
