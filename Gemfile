@@ -20,6 +20,7 @@ gem 'faker'
 gem 'populate'
 gem 'activeadmin', github: 'activeadmin'
 gem 'pg'
+gem 'paperclip'
 
 group :test do
   gem 'rspec-rails'
