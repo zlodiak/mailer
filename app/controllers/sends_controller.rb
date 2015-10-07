@@ -2,12 +2,21 @@ class SendsController < InheritedResources::Base
   before_filter :authenticate_user! 
   before_filter :owner_check, only: [:show, :edit, :update, :destroy, :create, :index, :new]
 
+  def index
+    if current_user
+      @sends = Send.where(user_id: current_user.id) 
+      @user = current_user
+    else
+      @sends = []
+    end
+  end  
+
   def send_up
     @sends = Send.where(user_id: current_user.id) 
     @emails = Email.where(user_id: current_user.id) 
 
     log_construct
-    
+
     @log
   end
 
@@ -35,6 +44,5 @@ class SendsController < InheritedResources::Base
         end  
       end  
     end
-
 end
 
