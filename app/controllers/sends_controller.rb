@@ -20,6 +20,18 @@ class SendsController < InheritedResources::Base
     @log
   end
 
+  def create
+    @send = current_user.sends.build(send_params)
+
+    if @send.save
+      flash[:success] = 'send saved'
+      redirect_to user_sends_path(current_user)
+    else
+      flash.now[:error] = 'send not saved'
+      render 'new'
+    end
+  end
+
   def update
     update!{ user_send_path(current_user, params[:id]) }
   end

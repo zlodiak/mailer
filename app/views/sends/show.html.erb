@@ -3,6 +3,10 @@
 <p>
   <strong><%= @send.subject %>::</strong>
   <%= @send.message %>
+  <br />
+  image path: <%= @send.image.url(:medium) %>
+  <br />
+  <%= image_tag(@send.image.url(:medium), class: "image_attachment") if @send.image_file_name %>
 </p>
 <hr />
 
