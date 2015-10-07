@@ -6,13 +6,9 @@ class SendsController < InheritedResources::Base
     @sends = Send.where(user_id: current_user.id) 
     @emails = Email.where(user_id: current_user.id) 
 
-    if SendMailer.sends_send(@sends, @emails, current_user.email).deliver_now
-      flash[:success] = 'sesnds is sended successfull'
-    else
-      flash[:error] = 'sesnds is failed'
-    end
+    SendMailer.sends_send(@sends, @emails, current_user.email).deliver_now
 
-    redirect_to user_sends_path(current_user)
+    redirect_to log_index_path
   end
 
   def update
