@@ -6,6 +6,8 @@
   <br />
   image path: <%= @send.image.url(:medium) %>
   <br />
+  image name: <%= @send.image_file_name %>
+  <br />
   <%= image_tag(@send.image.url(:medium), class: "image_attachment") if @send.image_file_name %>
 </p>
 <hr />
